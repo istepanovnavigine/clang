@@ -7,10 +7,12 @@ int inputline(char s[MAXLEN]);
 
 int main() {
     char hex[MAXLEN];
+    int result;
 
     inputline(hex);
 
-    printf("%s", hex);
+    result = htoi(hex);
+    printf("hex to dec: %d\n", result);
 
     return 0;
 }
@@ -18,12 +20,14 @@ int main() {
 int htoi(char s[MAXLEN]) {
     int result = 0;
 
+    for(int i = 0; s[i] != '\n'; i++) {
 
+    }
 
     return result;
 }
 
-int inputline(char s[MAXLEN]) { // *ввод строки для последующей обработки
+int inputline(char s[MAXLEN]) { //* ввод строки для последующей обработки
     int i, c;
 
     for(i = 0; i < MAXLEN - 1; i++) {
