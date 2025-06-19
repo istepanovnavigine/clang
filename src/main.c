@@ -23,7 +23,7 @@ int htoi(char s[MAXLEN]) {
     return result;
 }
 
-int inputline(char s[MAXLEN]) {
+int inputline(char s[MAXLEN]) { // *ввод строки для последующей обработки
     int i, c;
 
     for(i = 0; i < MAXLEN - 1; i++) {
