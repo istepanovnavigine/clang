@@ -30,7 +30,40 @@ int htoi(char s[MAXLEN]) {
     }
 
     for(i; s[i] != '\n'; i++) { // основная логика возведения
-        int number;
+        int number; // вот этого чувака нам нужно выковырять из строки
+        switch (s[i])
+        {
+        case 'a':
+        case 'A':
+            number = 10;
+            break;
+        case 'b':
+        case 'B':
+            number = 11;
+            break;
+        case 'c':
+        case 'C':
+            number = 12;
+            break;
+        case 'd':
+        case 'D':
+            number = 13;
+            break;
+        case 'e':
+        case 'E':
+            number = 14;
+            break;
+        case 'f':
+        case 'F':
+            number = 15;
+            break;
+        
+        default:
+            number = s[i];
+            break;
+        }
+
+
 
         result += power(number, lennum);
         lennum--;
