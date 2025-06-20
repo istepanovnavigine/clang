@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 #define MAXLEN 20
 
@@ -32,36 +33,13 @@ int htoi(char s[MAXLEN]) {
 
     while (s[i] != '\n') { // основная логика возведения
         int number; // вот этого чувака нам нужно выковырять из строки
-        switch (s[i])
-        {
-        case 'a':
-        case 'A':
-            number = 10;
-            break;
-        case 'b':
-        case 'B':
-            number = 11;
-            break;
-        case 'c':
-        case 'C':
-            number = 12;
-            break;
-        case 'd':
-        case 'D':
-            number = 13;
-            break;
-        case 'e':
-        case 'E':
-            number = 14;
-            break;
-        case 'f':
-        case 'F':
-            number = 15;
-            break;
+
+        int c = tolower(s[i]);
         
-        default:
-            number = s[i] - '0'; 
-            break;
+        if(c >= 'a' && c <= 'f') {
+            number = c - 'a' + 10;
+        } else if (c >= '0' && c <= '9') {
+            number = c - '0';
         }
 
         result += number * power(16, lennum);
