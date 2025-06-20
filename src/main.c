@@ -5,13 +5,14 @@
 
 int inputline(char s[MAXLEN]);
 int power(int base, int pow);
-int strlen(char str[MAXLEN]);
+int stringlen(char str[MAXLEN]);
+int htoi(char str[MAXLEN]);
 
 int main() {
     char hex[MAXLEN];
     int result;
 
-    inputline(hex);
+    inputline(hex);//тут проблем нет
 
     result = htoi(hex);
     printf("hex to dec: %d\n", result);
@@ -21,15 +22,15 @@ int main() {
 
 int htoi(char s[MAXLEN]) {
     int result = 0;
-    int lennum = strlen(s) - 1; // Получаем длину строки
-    int i = 0;
+    int lennum = stringlen(s) - 2; // Получаем длину строки
+    int i = 0; // !пока что тоже заебись
 
     if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) { // увеличиваем стартовый индекс и уменьшаем длину для степеней
         i += 2;
         lennum -= 2;
     }
 
-    for(i; s[i] != '\n'; i++) { // основная логика возведения
+    while (s[i] != '\n') { // основная логика возведения
         int number; // вот этого чувака нам нужно выковырять из строки
         switch (s[i])
         {
@@ -59,14 +60,15 @@ int htoi(char s[MAXLEN]) {
             break;
         
         default:
-            number = s[i];
+            number = s[i] - '0'; 
             break;
         }
 
-
+        printf("%d\n", lennum); //!ошибка где-то здесь
 
         result += power(number, lennum);
         lennum--;
+        i++;
     }
 
     return result;
@@ -96,10 +98,10 @@ int power(int base, int pow) {
     return result;
 }
 
-int strlen(char str[MAXLEN]) {
-    int len = 0;
+int stringlen(char str[MAXLEN]) {
+    int len;
 
-    for (len; str[len] != '\n'; len++) {
+    for (len = 0; str[len] != '\n'; len++) {
 
     }
 
