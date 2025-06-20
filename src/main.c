@@ -4,6 +4,7 @@
 #define MAXLEN 20
 
 int inputline(char s[MAXLEN]);
+int power(int base, int pow);
 
 int main() {
     char hex[MAXLEN];
@@ -39,4 +40,14 @@ int inputline(char s[MAXLEN]) { //* ввод строки для последу�
     s[i++] = '\0';
 
     return i;
+}
+
+int power(int base, int pow) {
+    int result = 1;
+
+    for(int i = 0; i < pow; i++) {
+        result = result * base;
+    }
+
+    return result;
 }
