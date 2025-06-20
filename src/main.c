@@ -23,7 +23,7 @@ int main() {
 int htoi(char s[MAXLEN]) {
     int result = 0;
     int lennum = stringlen(s) - 2; // Получаем длину строки
-    int i = 0; // !пока что тоже заебись
+    int i = 0; 
 
     if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) { // увеличиваем стартовый индекс и уменьшаем длину для степеней
         i += 2;
@@ -64,9 +64,7 @@ int htoi(char s[MAXLEN]) {
             break;
         }
 
-        printf("%d\n", lennum); //!ошибка где-то здесь
-
-        result += power(number, lennum);
+        result += number * power(16, lennum);
         lennum--;
         i++;
     }
