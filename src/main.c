@@ -2,6 +2,7 @@
 
 #define MAXLEN 20
 
+
 int inputline(char s[MAXLEN]);
 int power(int base, int pow);
 int strlen(char str[MAXLEN]);
@@ -20,12 +21,19 @@ int main() {
 
 int htoi(char s[MAXLEN]) {
     int result = 0;
-    int len = strlen(s); // Получаем длину строки
+    int lennum = strlen(s) - 1; // Получаем длину строки
+    int i = 0;
 
-    
+    if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) { // увеличиваем стартовый индекс и уменьшаем длину для степеней
+        i += 2;
+        lennum -= 2;
+    }
 
-    for(int i = 0; s[i] != '\n'; i++) {
+    for(i; s[i] != '\n'; i++) { // основная логика возведения
+        int number;
 
+        result += power(number, lennum);
+        lennum--;
     }
 
     return result;
