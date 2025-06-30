@@ -42,10 +42,9 @@ int inputline(char s[MAXLEN]) {
 
 int any(char s1[MAXLEN], char s2[MAXLEN]) {
     int pos = -1;
-
     
-    for (int i = 0; s2[i] != '\n' && s2[i] != '\0'; i++) {
-        for (int j = 0; s1[i] != '\n' && s1[i] != '\0'; j++) {
+    for (int i = 0; s2[i] != '\n'; i++) {
+        for (int j = 0; s1[j] != '\n'; j++) {
             if(s1[j] == s2[i]) {
                 if(pos != -1 && j < pos) {
                     pos = j;
