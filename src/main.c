@@ -4,18 +4,23 @@
 
 
 int inputline(char s[MAXLEN]);
-int squeeze(char s1[MAXLEN], char s2[MAXLEN]);
+int any(char s1[MAXLEN], char s2[MAXLEN]);
 
 int main() {
     char s1[MAXLEN];
     char s2[MAXLEN];
+    int pos;
 
     inputline(s1);
     inputline(s2);
 
-    squeeze(s1, s2);
+    pos = any(s1, s2);
 
-    printf("\n%s\n", s1);
+    if(pos == -1) {
+        printf("\nno considences\n");
+    } else {
+        printf("\nfirst index in s1 from s2 = %d\n", pos);
+    }
 
     return 0;
 }
@@ -35,32 +40,21 @@ int inputline(char s[MAXLEN]) {
     return i;
 }
 
-int squeeze(char s1[MAXLEN], char s2[MAXLEN]) {
-    int i = 0;
-    int j = 0;
-    char buf[MAXLEN];
+int any(char s1[MAXLEN], char s2[MAXLEN]) {
+    int pos = -1;
 
     
-    while ((s1[j] != '\n' && s1[j] != '\0') && (s2[j] != '\n' && s2[j] != '\0')) { 
-        if (s1[j] != s2[j]) {
-            buf[i++] = s1[j];   
+    for (int i = 0; s2[i] != '\n' && s2[i] != '\0'; i++) {
+        for (int j = 0; s1[i] != '\n' && s1[i] != '\0'; j++) {
+            if(s1[j] == s2[i]) {
+                if(pos != -1 && j < pos) {
+                    pos = j;
+                } else {
+                    pos = j;
+                }
+            }
         }
-        j++;
     }
 
- 
-    while (s1[j] != '\n' && s1[j] != '\0') {
-        buf[i++] = s1[j++];
-    }
-
-    
-
-    buf[i++] = '\n';
-    buf[i++] = '\0';
-
-    for(j = 0; j < i; j++) {
-        s1[j] = buf[j];
-    }
-
-    return i;
+    return pos; 
 }
