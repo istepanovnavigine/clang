@@ -21,22 +21,11 @@ int main() {
 }
 
 int setbits(int x, int p, int n, int y) {
-    int num_for_and = 1;
-    for(int i = 0; i < x - n - p; i++) {
-        num_for_and = num_for_and << 1;
-        num_for_and++;
-    }
-    num_for_and = num_for_and << p;
-    
-    for(int i = 0; i < n; i++) {
-        num_for_and = num_for_and << 1;
-        num_for_and++;
-    }
+    int mask = (1 << n) - 1;
+    int y_bits = (y & mask) << p;
 
-    x = x & num_for_and; // Получен x после вычета
+    x = x & ~(mask << p);
+    x = x | y_bits;
 
-    
-
-    return x;
+    return ~(mask << p);
 }
-
