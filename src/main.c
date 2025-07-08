@@ -17,8 +17,9 @@ int main() {
 }
 
 int rightrot(int x, int n) {
-    int rot_data = (((1 << n) - 1) & x) << n;
-    x = (x >> n) + rot_data;
+    int word_size = sizeof(int) * 8;
+    int rot_data =  x << (word_size - n);
+    x = (x >> n) | rot_data;
 
     return x;
 }
